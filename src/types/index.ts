@@ -32,6 +32,7 @@ export enum InstallSourceAndroid {
   NOT_SET = 0,
   GOOGLE_PLAY = 1,
   AMAZON = 2,
+  RUSTORE = 3,
 }
 
 export enum ProductType {
