@@ -73,6 +73,25 @@ export interface AndroidModuleProps extends NativeModuleProps {
   getPackageName: GetPackageName;
   getStorefront: GetStorefront;
   isFeatureSupported: (feature: Android.FeatureType) => Promise<boolean>;
+  /** Optional — available only in dual-store builds */
+  setBillingMode?: (
+    mode: 'auto' | 'google_play' | 'rustore',
+  ) => Promise<boolean>;
+  /** Optional — available only in dual-store builds */
+  getActiveBillingStore?: () => Promise<string>;
+  /** Optional — available only in RuStore builds */
+  confirmTwoStepPurchase?: (purchaseId: string) => Promise<void>;
+  /** Optional — available only in RuStore builds */
+  cancelTwoStepPurchase?: (purchaseId: string) => Promise<void>;
+  /** Optional — available only in RuStore builds */
+  purchaseTwoStep?: (
+    productId: string,
+    quantity: number,
+    orderId?: string,
+    developerPayload?: string,
+    appUserId?: string,
+    appUserEmail?: string,
+  ) => Promise<any>;
 }
 
 export const AndroidModule = NativeModules.RNIapModule as AndroidModuleProps;

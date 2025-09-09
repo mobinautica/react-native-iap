@@ -104,18 +104,14 @@ export interface RegionBillingConfig {
  * @returns Promise<string> The selected store
  */
 export const configureRegionBilling = async (
-  config: RegionBillingConfig = {}
+  _config: RegionBillingConfig = {},
 ): Promise<string> => {
-  const {
-    ruStoreCountries = ['RU', 'BY', 'KZ'],
-    fallbackToRuStore = true,
-    allowRuStoreWithoutApp = true,
-  } = config;
-  
+  // keep parameter for future enhancements
+  void _config;
   // For now, we'll use AUTO mode which handles region detection
   // In the future, we could pass more detailed config to native
   await setBillingMode(BillingMode.AUTO);
-  
+
   return getActiveBillingStore();
 };
 

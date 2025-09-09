@@ -4,10 +4,12 @@ import {InstallSourceAndroid} from '../types';
 const {RNIapModule} = NativeModules;
 
 /**
- * Check if the current Android build is configured for RuStore
+ * Check if the current Android build is configured for RuStore.
+ * This is a RuStore-specific helper to detect install source without
+ * conflicting with the generic Android helper name.
  * @returns {InstallSourceAndroid} The install source (RUSTORE if RuStore flavor is active)
  */
-export const getInstallSourceAndroid = (): InstallSourceAndroid => {
+export const getInstallSourceAndroidRuStore = (): InstallSourceAndroid => {
   // Check if RNIapModule exists and if it's the RuStore implementation
   // The RuStore module will be present when building with the rustore flavor
   if (RNIapModule && !('getSubscriptionStatus' in RNIapModule)) {
